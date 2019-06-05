@@ -3,6 +3,14 @@ from tkinter import messagebox
 
 glowneOkno = Tk()
 pasekMenu = Menu(glowneOkno)
+plotno=Canvas(glowneOkno, width=400 ,height=400)
+plotno.pack()
+obraz=Image.open("1.jpg")
+obrazTk=ImageTk.PhotoImage(obraz)
+plotno.create_image(200 ,200 ,image=obrazTk)
+
+plikMenu = Menu(pasekMenu, tearoff = 0)
+pasekMenu.add_cascade(label="Plik" , menu = plikMenu)
 
 plikMenu = Menu(pasekMenu, tearoff = 0)
 pasekMenu.add_cascade(label="Plik" , menu = plikMenu) #w menu tworzy pasek opcji o nazwie "Plik"
