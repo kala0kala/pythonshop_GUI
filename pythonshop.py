@@ -1,7 +1,7 @@
 import os
 from tkinter import *
 from tkinter import messagebox
-from PIL import Image, ImageTk
+from PIL import Image, ImageTk, ImageFilter
 
 
 
@@ -50,8 +50,7 @@ def opcje_skalowanie3():
 
 glowneOkno = Tk()
 pasekMenu = Menu(glowneOkno)
-obrotObrazu = Menu(pasekMenu)
-skalujObraz = Menu(pasekMenu)
+
 plotno=Canvas(glowneOkno, width=1000 ,height=750)
 plotno.pack()
 obraz=Image.open("1.jpg")
@@ -72,6 +71,8 @@ plikMenu.add_command(label = "Zamknij program" , command=zamknij)
 opcjeMenu = Menu(pasekMenu, tearoff = 0)
 obrotObrazu = Menu(opcjeMenu, tearoff = 0)
 skalujObraz = Menu(opcjeMenu, tearoff = 0)
+filtryMenu=Menu(opcjeMenu, tearoff = 0)
+
 pasekMenu.add_cascade(label="Opcje" , menu = opcjeMenu)
 opcjeMenu.add_cascade(label="Obrót obrazu" , menu = obrotObrazu)
 obrotObrazu.add_command(label = "Obrót 90" , command=obrot_90)
@@ -83,9 +84,11 @@ skalujObraz.add_command(label="101x150", command=opcje_skalowanie1)
 skalujObraz.add_command(label="150x212", command=opcje_skalowanie2)
 skalujObraz.add_command(label="214x232", command=opcje_skalowanie3)
 
-'''
-opcjeMenu.add_command(label = "Czarno biały obraz" , command=czarno_bialy)
-'''
+opcjeMenu.add_cascade(label="Filtry", menu=filtryMenu)
+filtryMenu.add_command(label="Czarno-biały", command=czarno_bialy)
+filtryMenu.add_command(label="Rozmycie", command=rozmycie)
+filtryMenu.add_command(label="Negatyw", command=emboss)
+
 glowneOkno.config(menu=pasekMenu)
 glowneOkno.mainloop()
 
