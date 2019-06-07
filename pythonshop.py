@@ -5,7 +5,7 @@ from PIL import Image, ImageTk
 
 
 
-def obrot_90():
+def obrot_90(): #funkcja obracająca obraz o 90 stopni
     global obraz
     obraz = obraz.rotate(90)
     plotno.obrazek=ImageTk.PhotoImage(obraz)
@@ -24,15 +24,15 @@ def obrot_270(): #fynkcja obracająca obraz o 270 stopni
     plotno.itemconfig(moj_obrazek, image=plotno.obrazek)
 
 glowneOkno = Tk()
-pasekMenu = Menu(glowneOkno)
-plotno=Canvas(glowneOkno, width=400 ,height=400)
+pasekMenu = Menu(glowneOkno) #pasek menu
+plotno=Canvas(glowneOkno, width=400 ,height=400) #tworzy płótno
 plotno.pack()
 obraz=Image.open("1.jpg")
 obrazTk=ImageTk.PhotoImage(obraz)
 plotno.obrazek=obrazTk
 moj_obrazek=plotno.create_image(200 ,200 ,image=obrazTk)
 
-plikMenu = Menu(pasekMenu, tearoff = 0)
+plikMenu = Menu(pasekMenu, tearoff = 0) #paek menu
 pasekMenu.add_cascade(label="Plik" , menu = plikMenu)
 
 '''
@@ -42,7 +42,7 @@ plikMenu.add_command(label = "Zapisz plik" , command=zapisz_plik)
 plikMenu.add_command(label = "Zamknij program" , command=zamknij)
 
 opcjeMenu = Menu(pasekMenu, tearoff = 0)
-pasekMenu.add_cascade(label="Opcje" , menu = opcjeMenu)
+pasekMenu.add_cascade(label="Opcje" , menu = opcjeMenu) 
 
 opcjeMenu.add_command(label = "Obrót 90" , command=obrot_90)
 opcjeMenu.add_command(label = "Obrót 180" , command=obrot_180)
