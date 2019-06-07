@@ -50,7 +50,7 @@ def opcje_skalowanie3():
 
 glowneOkno = Tk()
 pasekMenu = Menu(glowneOkno) #pasek menu
-plotno=Canvas(glowneOkno, width=400 ,height=400) #tworzy płótno
+plotno=Canvas(glowneOkno, width=800 ,height=800) #tworzy płótno
 plotno.pack()
 obraz=Image.open("1.jpg")
 obrazTk=ImageTk.PhotoImage(obraz)
