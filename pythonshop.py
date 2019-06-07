@@ -1,13 +1,15 @@
 from tkinter import *
 from tkinter import messagebox
 
+#Tworzy płótno na którym wyświetla się obraz oraz dodaje obraz
 glowneOkno = Tk()
 pasekMenu = Menu(glowneOkno)
 plotno=Canvas(glowneOkno, width=400 ,height=400)
 plotno.pack()
 obraz=Image.open("1.jpg")
 obrazTk=ImageTk.PhotoImage(obraz)
-plotno.create_image(200 ,200 ,image=obrazTk)
+plotno.obrazek=obrazTk
+moj_obrazek=plotno.create_image(200 ,200 ,image=obrazTk)
 
 plikMenu = Menu(pasekMenu, tearoff = 0)
 pasekMenu.add_cascade(label="Plik" , menu = plikMenu)
