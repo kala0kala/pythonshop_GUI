@@ -22,6 +22,31 @@ def obrot_270(): #fynkcja obracająca obraz o 270 stopni
     obraz = obraz.rotate(270)
     plotno.obrazek=ImageTk.PhotoImage(obraz)
     plotno.itemconfig(moj_obrazek, image=plotno.obrazek)
+ 
+#Trzy różne skalowania w trzech różnych funkcjach
+def opcje_skalowanie1():
+    global obraz
+    obraz=obraz.resize((101,150))
+    plotno.obrazek=ImageTk.PhotoImage(obraz)
+    plotno.itemconfig(moj_obrazek, image=plotno.obrazek)
+    print("Przeskalowano!")
+    return obraz
+
+def opcje_skalowanie2():
+    global obraz
+    obraz=obraz.resize((150,212))
+    plotno.obrazek=ImageTk.PhotoImage(obraz)
+    plotno.itemconfig(moj_obrazek, image=plotno.obrazek)
+    print("Przeskalowano!")
+    return obraz
+
+def opcje_skalowanie3():
+    global obraz
+    obraz=obraz.resize((214,232))
+    plotno.obrazek=ImageTk.PhotoImage(obraz)
+    plotno.itemconfig(moj_obrazek, image=plotno.obrazek)
+    print("Przeskalowano!")
+    return obraz
 
 glowneOkno = Tk()
 pasekMenu = Menu(glowneOkno) #pasek menu
@@ -38,17 +63,23 @@ pasekMenu.add_cascade(label="Plik" , menu = plikMenu)
 '''
 plikMenu.add_command(label = "Wczytaj plik")
 plikMenu.add_command(label = "Zapisz plik" , command=zapisz_plik)
-'''
-plikMenu.add_command(label = "Zamknij program" , command=zamknij)
 
+plikMenu.add_command(label = "Zamknij program" , command=zamknij)
+'''
 opcjeMenu = Menu(pasekMenu, tearoff = 0)
 pasekMenu.add_cascade(label="Opcje" , menu = opcjeMenu) 
 
 opcjeMenu.add_command(label = "Obrót 90" , command=obrot_90)
 opcjeMenu.add_command(label = "Obrót 180" , command=obrot_180)
 opcjeMenu.add_command(label = "Obrót 270" , command=obrot_270)
+
+obrazMenu=Menu(pasekMenu, tearoff=0)
+pasekMenu.add_cascade(label="Skaluj", menu=obrazMenu)
+obrazMenu.add_command(label="101x150", command=opcje_skalowanie1)
+obrazMenu.add_command(label="150x212", command=opcje_skalowanie2)
+obrazMenu.add_command(label="214x232", command=opcje_skalowanie3)
+
 '''
-opcjeMenu.add_command(label = "Skaluj" , command=opcja_skalowanie)
 opcjeMenu.add_command(label = "Czarno biały obraz" , command=czarno_bialy)
 '''
 glowneOkno.config(menu=pasekMenu)
