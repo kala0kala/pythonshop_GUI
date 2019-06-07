@@ -1,6 +1,24 @@
 from tkinter import *
 from tkinter import messagebox
 
+def obrot_90(): #funkcja obracająca obraz o 90 stopni
+    global obraz
+    obraz = obraz.rotate(90)
+    plotno.obrazek=ImageTk.PhotoImage(obraz)
+    plotno.itemconfig(moj_obrazek, image=plotno.obrazek)
+
+def obrot_180(): #funkcja obracająca obraz o 180 stopni
+    global obraz
+    obraz = obraz.rotate(180)
+    plotno.obrazek=ImageTk.PhotoImage(obraz)
+    plotno.itemconfig(moj_obrazek, image=plotno.obrazek)
+
+def obrot_270(): #fynkcja obracająca obraz o 270 stopni
+    global obraz
+    obraz = obraz.rotate(270)
+    plotno.obrazek=ImageTk.PhotoImage(obraz)
+    plotno.itemconfig(moj_obrazek, image=plotno.obrazek)
+
 #Tworzy płótno na którym wyświetla się obraz oraz dodaje obraz
 glowneOkno = Tk()
 pasekMenu = Menu(glowneOkno)
