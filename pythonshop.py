@@ -49,8 +49,10 @@ def opcje_skalowanie3():
     return obraz
 
 glowneOkno = Tk()
-pasekMenu = Menu(glowneOkno) #pasek menu
-plotno=Canvas(glowneOkno, width=800 ,height=800) #tworzy płótno
+pasekMenu = Menu(glowneOkno)
+obrotObrazu = Menu(pasekMenu)
+skalujObraz = Menu(pasekMenu)
+plotno=Canvas(glowneOkno, width=1000 ,height=750)
 plotno.pack()
 obraz=Image.open("1.jpg")
 obrazTk=ImageTk.PhotoImage(obraz)
@@ -65,19 +67,21 @@ plikMenu.add_command(label = "Wczytaj plik")
 plikMenu.add_command(label = "Zapisz plik" , command=zapisz_plik)
 
 plikMenu.add_command(label = "Zamknij program" , command=zamknij)
-'''
+''' 
+
 opcjeMenu = Menu(pasekMenu, tearoff = 0)
-pasekMenu.add_cascade(label="Opcje" , menu = opcjeMenu) 
+obrotObrazu = Menu(opcjeMenu, tearoff = 0)
+skalujObraz = Menu(opcjeMenu, tearoff = 0)
+pasekMenu.add_cascade(label="Opcje" , menu = opcjeMenu)
+opcjeMenu.add_cascade(label="Obrót obrazu" , menu = obrotObrazu)
+obrotObrazu.add_command(label = "Obrót 90" , command=obrot_90)
+obrotObrazu.add_command(label = "Obrót 180" , command=obrot_180)
+obrotObrazu.add_command(label = "Obrót 270" , command=obrot_270)
 
-opcjeMenu.add_command(label = "Obrót 90" , command=obrot_90)
-opcjeMenu.add_command(label = "Obrót 180" , command=obrot_180)
-opcjeMenu.add_command(label = "Obrót 270" , command=obrot_270)
-
-obrazMenu=Menu(pasekMenu, tearoff=0)
-pasekMenu.add_cascade(label="Skaluj", menu=obrazMenu)
-obrazMenu.add_command(label="101x150", command=opcje_skalowanie1)
-obrazMenu.add_command(label="150x212", command=opcje_skalowanie2)
-obrazMenu.add_command(label="214x232", command=opcje_skalowanie3)
+opcjeMenu.add_cascade(label = "Skaluj" , menu = skalujObraz)
+skalujObraz.add_command(label="101x150", command=opcje_skalowanie1)
+skalujObraz.add_command(label="150x212", command=opcje_skalowanie2)
+skalujObraz.add_command(label="214x232", command=opcje_skalowanie3)
 
 '''
 opcjeMenu.add_command(label = "Czarno biały obraz" , command=czarno_bialy)
