@@ -2,6 +2,7 @@ import os
 from tkinter import *
 from tkinter import messagebox
 from PIL import Image, ImageTk, ImageFilter
+from tkinter import filedialog
 
 
 
@@ -48,6 +49,31 @@ def opcje_skalowanie3():
     print("Przeskalowano!")
     return obraz
 
+#Funkcja pozwala na wczytanie dowolnego pliku, domyślnie o formacie .jpg z komputera użytkownika 
+def wczytaj_plik():
+    global obraz
+    global moj_obrazek
+    glowneOkno.filename =  filedialog.askopenfilename(initialdir = "/",title = "Select file",filetypes = (("jpeg files",".jpg"),("all files",".*")))
+    obraz = Image.open(glowneOkno.filename)
+    obrazTk = ImageTk.PhotoImage(obraz)
+    plotno.obrazek=obrazTk
+    moj_obrazek=plotno.create_image(200 ,200 ,image=obrazTk)
+
+#Funkcja zapisuje plik w formacie .jpg, pod nazwą podaną przez użytkownika
+def zapisz_plik():
+    global obraz
+    global moj_obrazek
+    #messagebox.showinfo("Zapis", pole_tekstowe.get())
+    opis_pola_tekstowego=Label(glowneOkno,text='Podaj nazwę pliku:')
+    opis_pola_tekstowego.pack(side=LEFT)
+    pole_tekstowe=Entry(glowneOkno)
+    pole_tekstowe.pack(side=RIGHT)
+    przycisk_zapisz=Button(glowneOkno,text="Zapisz",command=zapisz_plik)
+    przycisk_zapisz.pack(side=BOTTOM)
+    obraz.save(pole_tekstowe+'.jpg')
+    messagebox.showinfo("Zapis", pole_tekstowe.get())
+
+
 glowneOkno = Tk()
 pasekMenu = Menu(glowneOkno)
 
@@ -61,10 +87,10 @@ moj_obrazek=plotno.create_image(200 ,200 ,image=obrazTk)
 plikMenu = Menu(pasekMenu, tearoff = 0) #paek menu
 pasekMenu.add_cascade(label="Plik" , menu = plikMenu)
 
-'''
-plikMenu.add_command(label = "Wczytaj plik")
-plikMenu.add_command(label = "Zapisz plik" , command=zapisz_plik)
 
+plikMenu.add_command(label = "Wczytaj plik", command=wczytaj_plik)
+plikMenu.add_command(label = "Zapisz plik" , command=zapisz_plik)
+'''
 plikMenu.add_command(label = "Zamknij program" , command=zamknij)
 ''' 
 
