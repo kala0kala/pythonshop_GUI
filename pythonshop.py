@@ -102,10 +102,6 @@ pasekMenu = Menu(glowneOkno) pasek menu
 
 plotno=Canvas(glowneOkno, width=1000 ,height=750)
 plotno.pack()
-obraz=Image.open("1.jpg")
-obrazTk=ImageTk.PhotoImage(obraz)
-plotno.obrazek=obrazTk
-moj_obrazek=plotno.create_image(200 ,200 ,image=obrazTk)
 
 plikMenu = Menu(pasekMenu, tearoff = 0) #przycisk plik na pasku menu
 pasekMenu.add_cascade(label="Plik" , menu = plikMenu) #umożliwia się rozwinięcie przyciskowi plik
@@ -126,7 +122,7 @@ obrotObrazu.add_command(label = "Obrót 90" , command=obrot_90) #przycisk wywoł
 obrotObrazu.add_command(label = "Obrót 180" , command=obrot_180) #przycisk wywołujący obrót obrazu o 180 stopni
 obrotObrazu.add_command(label = "Obrót 270" , command=obrot_270) #przycisk wywołujący obrót obrazu o 270 stopni
 
-opcjeMenu.add_cascade(label = "Skaluj" , menu = skalujObraz #umożliwia rozwinięcie się przyciskowi skaluj
+opcjeMenu.add_cascade(label = "Skaluj" , menu = skalujObraz) #umożliwia rozwinięcie się przyciskowi skaluj
 skalujObraz.add_command(label="101x150", command=opcje_skalowanie1) #przycisk wywołujący skalowanie obrazu na wymiary 101x150 pikseli
 skalujObraz.add_command(label="150x212", command=opcje_skalowanie2) #przycisk wywołujący skalowanie obrazu na wymiary 150x212 pikseli
 skalujObraz.add_command(label="214x232", command=opcje_skalowanie3) #przycisk wywołujący skalowanie obrazu na wymiary 214x232 pikseli
