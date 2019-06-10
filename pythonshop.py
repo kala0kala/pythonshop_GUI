@@ -49,6 +49,25 @@ def opcje_skalowanie3():
     print("Przeskalowano!")
     return obraz
 
+#funkcje-filtry 
+def czarno_bialy():
+    global obraz
+    obraz=obraz.convert("L")
+    plotno.obrazek=ImageTk.PhotoImage(obraz)
+    plotno.itemconfig(moj_obrazek, image=plotno.obrazek)
+
+def rozmycie():
+    global obraz
+    obraz=obraz.filter(ImageFilter.BLUR)
+    plotno.obrazek=ImageTk.PhotoImage(obraz)
+    plotno.itemconfig(moj_obrazek, image=plotno.obrazek)
+
+def emboss():
+    global obraz
+    obraz=obraz.filter(ImageFilter.EMBOSS)
+    plotno.obrazek=ImageTk.PhotoImage(obraz)
+    plotno.itemconfig(moj_obrazek, image=plotno.obrazek)
+
 #Funkcja pozwala na wczytanie dowolnego pliku, domyślnie o formacie .jpg z komputera użytkownika 
 def wczytaj_plik():
     global obraz
@@ -73,7 +92,12 @@ def zapisz_plik():
     obraz.save(pole_tekstowe+'.jpg')
     messagebox.showinfo("Zapis", pole_tekstowe.get())
 
-
+#funkcja zamykająca
+def zamknij():
+    global glowneOkno
+    glowneOkno.destroy()
+    
+    
 glowneOkno = Tk()
 pasekMenu = Menu(glowneOkno)
 
