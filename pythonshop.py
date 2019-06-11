@@ -91,7 +91,7 @@ def zamknij():
     
     
 glowneOkno = Tk()
-pasekMenu = Menu(glowneOkno) pasek menu
+pasekMenu = Menu(glowneOkno) 
 
 plotno=Canvas(glowneOkno, width=1000 ,height=750)
 plotno.pack()
