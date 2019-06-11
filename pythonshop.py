@@ -29,7 +29,6 @@ def opcje_skalowanie1():
     obraz=obraz.resize((101,150))
     plotno.obrazek=ImageTk.PhotoImage(obraz)
     plotno.itemconfig(moj_obrazek, image=plotno.obrazek)
-    print("Przeskalowano!")
     return obraz
 
 def opcje_skalowanie2():
@@ -37,7 +36,6 @@ def opcje_skalowanie2():
     obraz=obraz.resize((150,212))
     plotno.obrazek=ImageTk.PhotoImage(obraz)
     plotno.itemconfig(moj_obrazek, image=plotno.obrazek)
-    print("Przeskalowano!")
     return obraz
 
 def opcje_skalowanie3():
@@ -45,7 +43,6 @@ def opcje_skalowanie3():
     obraz=obraz.resize((214,232))
     plotno.obrazek=ImageTk.PhotoImage(obraz)
     plotno.itemconfig(moj_obrazek, image=plotno.obrazek)
-    print("Przeskalowano!")
     return obraz
 
 #funkcje-filtry 
