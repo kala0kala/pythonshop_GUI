@@ -80,16 +80,9 @@ def wczytaj_plik():
 #Funkcja zapisuje plik w formacie .jpg, pod nazwą podaną przez użytkownika
 def zapisz_plik():
     global obraz
-    global moj_obrazek
-    #messagebox.showinfo("Zapis", pole_tekstowe.get())
-    opis_pola_tekstowego=Label(glowneOkno,text='Podaj nazwę pliku:')
-    opis_pola_tekstowego.pack(side=LEFT)
-    pole_tekstowe=Entry(glowneOkno)
-    pole_tekstowe.pack(side=RIGHT)
-    przycisk_zapisz=Button(glowneOkno,text="Zapisz",command=zapisz_plik)
-    przycisk_zapisz.pack(side=BOTTOM)
-    obraz.save(pole_tekstowe+'.jpg')
-    messagebox.showinfo("Zapis", pole_tekstowe.get())
+    save_path = filedialog.asksaveasfilename(initialdir = "/", title = "Select file", filetypes = (("JPG",".jpg"),("Wszystkie pliki",".*")))
+    save_path+=".jpg"
+    obraz.save(save_path)
 
 #funkcja zamykająca
 def zamknij():
